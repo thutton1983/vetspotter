@@ -63,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # TGH 01072019, adding postgresql for production to match Heroku
 gem 'pg', group: :production
+
+gem 'carrierwave'
