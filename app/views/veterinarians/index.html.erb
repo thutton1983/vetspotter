@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Veterinarians</h1>
+<div class="jumbotron">
+  <h2>Vetspotter is the best way to find reviews about vets</h2>
+  <h3>Find pricing and customer experience reviews<br>
+    Leave reviews below</h3>
 
+</div>
 <table class="table table-hover table-condensed">
   <thead>
     <tr>
@@ -27,7 +31,8 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
 <%= link_to 'New Veterinarian', new_veterinarian_path, class: "btn btn-link" %>
+<br>
+<div class="bottom_image">
+<%= image_tag('https://s3.amazonaws.com/vetspotter/tom-Waiting-dog-lineart.png', :size=> "150x150") %>
+</div>
