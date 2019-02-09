@@ -23,7 +23,7 @@
         <td><%= veterinarian.name %></td>
         <td><%= veterinarian.address %></td>
         <td><%= veterinarian.phone %></td>
-        <td><%= veterinarian.website %></td>
+        <td><%= link_to veterinarian.website, veterinarian.website %></td>
         <td><%= link_to 'Show', veterinarian, class: "btn btn-link" %></td>
         <td><%= link_to 'Edit', edit_veterinarian_path(veterinarian), class: "btn btn-link" %></td>
         <td><%= link_to 'Destroy', veterinarian, class: "btn btn-link", method: :delete, data: { confirm: 'Are you sure?' } %></td>
