@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_veterinarian
   before_action :set_review, only: [:edit, :update, :destroy]
 
   # GET /reviews/new
@@ -16,6 +17,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
+    @review.veterinarian_id = @veterinarian.id
+
     respond_to do |format|
       if @review.save
         format.html { redirect_to root_path, notice: 'Review was successfully created.' }
@@ -55,6 +58,10 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def set_veterinarian
+      @veterinarian = Veterinarian.find(params[:veterinarian_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
