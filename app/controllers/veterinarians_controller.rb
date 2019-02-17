@@ -10,6 +10,7 @@ class VeterinariansController < ApplicationController
   # GET /veterinarians/1
   # GET /veterinarians/1.json
   def show
+    @reviews=Review.where(veterinarian_id: @veterinarian.id)
   end
 
   # GET /veterinarians/new

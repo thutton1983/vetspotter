@@ -1,25 +1,42 @@
-<%= image_tag @veterinarian.image_url %>
+<div class = "row">
+  <div class = "col-md-3">
+    <%= image_tag @veterinarian.image_url %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @veterinarian.name %>
-</p>
+    <h2>
+      <%= @veterinarian.name %>
+    </h2>
 
-<p>
-  <strong>Address:</strong>
-  <%= @veterinarian.address %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @veterinarian.address %>
+    </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @veterinarian.phone %>
-</p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @veterinarian.phone %>
+    </p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @veterinarian.website %>
-</p>
-<%= link_to "Write a Review", new_veterinarian_review_path(@veterinarian), class: "btn btn-primary" %>
+    <p>
+      <strong>Website:</strong>
+      <%= link_to @veterinarian.website, @veterinarian.website %>
+    </p>
+    <%= link_to "Write a Review", new_veterinarian_review_path(@veterinarian), class: "btn btn-primary" %>
+
+    </div>
+
+  <div class = "col-md-9">
+    <% if @reviews.blank? %>
+    <br>
+    <h3>No reviews yet.  Be the first to write one!</h3>
+    <% else %>
+    <%= @reviews.each do |review| %>
+      <p><%= review.rating %> </p>
+      <p><%= review.comment %> </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 
 
 <%= link_to 'Edit', edit_veterinarian_path(@veterinarian), class: "btn btn-link" %> |
