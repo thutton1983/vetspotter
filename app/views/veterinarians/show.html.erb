@@ -1,4 +1,5 @@
 
+<br>
 <div class = "row">
   <div class = "col-md-3">
     <%= image_tag @veterinarian.image_url %>
@@ -6,6 +7,9 @@
     <h2>
       <%= @veterinarian.name %>
     </h2>
+
+    <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+    <p><%= "Average from #{@reviews.length} reviews" %></p>
 
     <p>
       <strong>Address:</strong>
@@ -21,25 +25,36 @@
       <strong>Website:</strong>
       <%= link_to @veterinarian.website, @veterinarian.website %>
     </p>
+    <br>
     <%= link_to "Write a Review", new_veterinarian_review_path(@veterinarian), class: "btn btn-primary" %>
 
-    </div>
+  </div>
 
   <div class = "col-md-9">
     <% if @reviews.blank? %>
     <br>
     <h3>No reviews yet.  Be the first to write one!</h3>
     <% else %>
-    <%= @reviews.each do |review| %>
-      <div class="star-rating" data-score= <%= review.rating %> ></div>
-      <p> <%= review.comment %> </p>
-    <% end %>
+
+    <table class = "table">
+      <tbody>
+        <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <div class="star-rating" data-score= <%= review.rating %> ></div>
+            <p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
     <% end %>
   </div>
 </div>
 
 
-
+<br>
 <%= link_to 'Edit', edit_veterinarian_path(@veterinarian), class: "btn btn-link" %> |
 <%= link_to 'Back', veterinarians_path, class: "btn btn-link" %>
 

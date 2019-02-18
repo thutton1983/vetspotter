@@ -10,7 +10,11 @@ class VeterinariansController < ApplicationController
   # GET /veterinarians/1
   # GET /veterinarians/1.json
   def show
-    @reviews=Review.where(veterinarian_id: @veterinarian.id)
+    @reviews=Review.where(veterinarian_id: @veterinarian.id).order("created_at DESC")
+    if @reviews.blank?
+      @avg_rating = 0
+    else @avg_rating = @reviews.average(:rating).round(3)
+    end
   end
 
   # GET /veterinarians/new
