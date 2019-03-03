@@ -37,6 +37,13 @@
     <% else %>
 
     <table class = "table">
+      <!--this column width bit is super hacky, should probably be fixed -->
+      <thead>
+        <tr>
+          <th width=100px></th>
+          <th width=full></th>
+        </tr>
+      </thead>
       <tbody>
         <% @reviews.each do |review| %>
           <tr>
