@@ -27,7 +27,15 @@
     </p>
     <br>
     <%= link_to "Write a Review", new_veterinarian_review_path(@veterinarian), class: "btn btn-primary" %>
-
+    <br>
+    <br>
+    <iframe
+      width="300"
+      height="300"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyACHabXbdUZmjzuBcoN-fHwA-IHJnLlyTA
+        &q=<%= @veterinarian.address.parameterize %>&zoom=12" allowfullscreen>
+    </iframe>
   </div>
 
   <div class = "col-md-9">
