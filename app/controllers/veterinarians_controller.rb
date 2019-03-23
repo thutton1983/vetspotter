@@ -1,12 +1,20 @@
 class VeterinariansController < ApplicationController
   before_action :set_veterinarian, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :check_user, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
+  before_action :check_user, except: [:index, :show, :search]
 
   # GET /veterinarians
   # GET /veterinarians.json
   def index
     @veterinarians = Veterinarian.all
+  end
+
+  def search
+    if params[:search].present?
+      @veterinarians = Veterinarian.search(params[:search])
+    else
+      @veterinarians = Veterinarian.all
+    end
   end
 
   # GET /veterinarians/1
