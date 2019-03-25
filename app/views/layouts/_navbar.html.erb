@@ -30,6 +30,7 @@
 <%= form_tag search_veterinarians_path, method: :get, class: "navbar-form navbar-left" do %>
   <p>
     <%= text_field_tag :search, params[:search], class: "form-control" %>
+    <!-- can't figure out why this doesn't work, 2019 03 25 <i class= "glyphicon glyphicon-search" ></i> -->
     <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
   </p>
   <% end %>
