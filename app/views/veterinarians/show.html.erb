@@ -1,5 +1,5 @@
 
-<br>
+<br><br>
 <div class = "row">
   <div class = "col-md-3">
     <%= image_tag @veterinarian.image_url %>
@@ -26,7 +26,7 @@
       <%= link_to @veterinarian.website, @veterinarian.website %>
     </p>
     <br>
-    <%= link_to "Write a Review", new_veterinarian_review_path(@veterinarian), class: "btn btn-primary" %>
+    <%= link_to "Write a Review", new_veterinarian_review_path(@veterinarian), class: "btn" %>
     <br>
     <br>
     <iframe
@@ -84,8 +84,9 @@
 
 
 <br>
-<%= link_to 'Edit', edit_veterinarian_path(@veterinarian), class: "btn btn-link" %> |
-<%= link_to 'Back', veterinarians_path, class: "btn btn-link" %>
+
+<%= link_to 'Edit', edit_veterinarian_path(@veterinarian), class: "btn" %> |
+<%= link_to 'Back', veterinarians_path, class: "btn" %>
 
 <script>
 $('.star-rating').raty({

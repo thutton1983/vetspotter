@@ -6,12 +6,23 @@ accommodating custom alerts; br added below 2019 02 13-->
 
 <br>
 
-<div class="jumbotron">
-  <h2>Vetspotter is the best way to find reviews about vets</h2>
-  <h3>Find pricing and customer experience reviews<br>
-    Leave reviews below</h3>
-
+<div class="jumbotron text-center">
+  <h2 style="color:black;">Search Vetspotter to find reviews of local veterinarians</h2>
+  <br>
+  <!--search bar and button width/alignment are messy, need to be fixed when I understand it. 20190630-->
+  <div class="example form-inline", style="width:51%; margin-right:auto; margin-left:auto;">
+  <%= form_tag search_veterinarians_path, method: :get do %>
+    <p>
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: 'Enter address, city, or zip', style:"width:600px;"%>
+      <!-- can't figure out why this doesn't work, 2019 03 25 <i class= "glyphicon glyphicon-search" ></i> -->
+      <%= submit_tag "Search", style: "color:white;", name: nil, class: "btn" %>
+    </p>
+    <% end %>
+    </div>
 </div>
+
+<div class="row">
+<div class="col col-lg-6">
 <table class="table table-hover table-condensed">
   <thead>
     <tr>
@@ -28,9 +39,9 @@ accommodating custom alerts; br added below 2019 02 13-->
   <tbody>
     <% @veterinarians.each do |veterinarian| %>
       <tr>
-        <td><%= link_to veterinarian.name, veterinarian %></td>
+        <td col width="140"><%= link_to veterinarian.name, veterinarian %></td>
         <td><%= veterinarian.address %></td>
-        <td><%= veterinarian.phone %></td>
+        <td col width="145"><%= veterinarian.phone %></td>
         <td><%= link_to veterinarian.website, veterinarian.website %></td>
         <% if user_signed_in? && current_user.admin? %>
           <td><%= link_to 'Edit', edit_veterinarian_path(veterinarian), class: "btn btn-link" %></td>
@@ -40,10 +51,28 @@ accommodating custom alerts; br added below 2019 02 13-->
     <% end %>
   </tbody>
 </table>
+</div>
+
+<div class="col col-lg-6 text-center">
+
+  <iframe
+    width="500"
+    height="500"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/search?q=20009&zoom=10&key=AIzaSyACHabXbdUZmjzuBcoN-fHwA-IHJnLlyTA">
+  </iframe>
+
+</div>
+
+</div>
+</div>
+
+
 <% if user_signed_in? && current_user.admin? %>
 <%= link_to 'New Veterinarian', new_veterinarian_path, class: "btn btn-link" %>
 <% end %>
 <br>
+<br>
 <div class="bottom_image">
-<%= image_tag('https://s3.amazonaws.com/vetspotter/tom-Waiting-dog-lineart.png', :size=> "150x150") %>
+<%= image_tag('https://s3.amazonaws.com/vetspotter/tom-Waiting-dog-lineart.png', :size=> "75x75") %>
 </div>
