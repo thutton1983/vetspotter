@@ -4,6 +4,7 @@
 
 accommodating custom alerts; br added below 2019 02 13-->
 
+
 <br>
 
 <div class="jumbotron text-center">
@@ -15,7 +16,7 @@ accommodating custom alerts; br added below 2019 02 13-->
     <p>
       <%= text_field_tag :search, params[:search], class: "form-control", placeholder: 'Enter address, city, or zip', style:"width:600px;"%>
       <!-- can't figure out why this doesn't work, 2019 03 25 <i class= "glyphicon glyphicon-search" ></i> -->
-      <%= submit_tag "Search", style: "color:white;", name: nil, class: "btn" %>
+      <%= submit_tag "Search", style: "color:white;", name: nil, class: "btn btn-front_page" %>
     </p>
     <% end %>
     </div>
@@ -27,9 +28,8 @@ accommodating custom alerts; br added below 2019 02 13-->
   <thead>
     <tr>
       <th>Name</th>
-      <th>Address</th>
-      <th>Phone</th>
-      <th>Website</th>
+      <th>Location and Contact</th>
+      <th>Average User Rating</th>
       <% if user_signed_in? && current_user.admin? %>
         <th colspan="2"></th>
       <% end %>
@@ -37,12 +37,16 @@ accommodating custom alerts; br added below 2019 02 13-->
   </thead>
 
   <tbody>
-    <% @veterinarians.each do |veterinarian| %>
+    <% @veterinarians.each do |veterinarian|
+    @reviews = Review.where(veterinarian_id:veterinarian.id)
+    @avg_rating = @reviews.average(:rating)%>
+
       <tr>
-        <td col width="140"><%= link_to veterinarian.name, veterinarian %></td>
-        <td><%= veterinarian.address %></td>
-        <td col width="145"><%= veterinarian.phone %></td>
-        <td><%= link_to veterinarian.website, veterinarian.website %></td>
+        <td col width="140"><%=  link_to veterinarian.name, veterinarian %></td>
+        <td><%= veterinarian.address %> <br> <%= veterinarian.phone %> <br> <%= link_to veterinarian.website, veterinarian.website %></td>
+
+      <td col width="200px"><p class="star-rating" data-score= <%= @avg_rating %></p> <p><%= "Average from #{@reviews.length} reviews" %></p></td>
+
         <% if user_signed_in? && current_user.admin? %>
           <td><%= link_to 'Edit', edit_veterinarian_path(veterinarian), class: "btn btn-link" %></td>
           <td><%= link_to 'Destroy', veterinarian, class: "btn btn-link", method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -54,14 +58,14 @@ accommodating custom alerts; br added below 2019 02 13-->
 </div>
 
 <div class="col col-lg-6 text-center">
-
+<!--
   <iframe
-    width="500"
-    height="500"
+    width="400"
+    height="400"
     frameborder="0" style="border:0"
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3104.2110814013613!2d-77.03848538503253!3d38.91915265326718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7dc5cadbdd3%3A0x99752a7d2ae4f853!2sWashington%2C+DC+20009!5e0!3m2!1sen!2sus!4v1562114263530!5m2!1sen!2sus"
   </iframe>
-
+-->
 </div>
 
 </div>
@@ -73,6 +77,17 @@ accommodating custom alerts; br added below 2019 02 13-->
 <% end %>
 <br>
 <br>
-<div class="bottom_image">
-<%= image_tag('https://s3.amazonaws.com/vetspotter/tom-Waiting-dog-lineart.png', :size=> "75x75") %>
+<div class="bottom_image margin-bottom: 10px;">
+<%= image_tag('https://s3.amazonaws.com/vetspotter/tom-Waiting-dog-lineart.png', :size=> "75x75", :alt=> "sitting dog logo") %>
 </div>
+
+<script>
+$('.star-rating').raty('destroy');
+$('.star-rating').raty({
+  path: 'https://s3.amazonaws.com/vetspotter/stars',
+  readOnly: true,
+  score: function() {
+    return $(this).attr('data-score');
+  }
+});
+</script>

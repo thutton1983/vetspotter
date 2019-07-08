@@ -38,13 +38,14 @@
     </iframe>
   </div>
 
-  <div class = "col-md-9">
+  <div class = "col-md-9" style="background-color: #f7f7f7">
+
     <% if @reviews.blank? %>
     <br>
     <h3>No reviews yet.  Be the first to write one!</h3>
     <% else %>
 
-    <table class = "table">
+    <table class = "table review-table">
       <!--this column width bit is super hacky, should probably be fixed -->
       <thead>
         <tr>

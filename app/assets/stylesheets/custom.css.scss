@@ -1,7 +1,11 @@
+h1 {
+  text-align: center;
+}
+
 .jumbotron {
   margin-left: -20px;
   margin-right: -20px;
-    background-color: #00ABE7;
+    background-color: #8fd2ff;
   border: 0px;
   h2 {
   color: black;
@@ -42,7 +46,31 @@
   padding-right: 20px;
 }
 
+.btn-front_page {
+  background: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #8fd2ff;
+  cursor: pointer;
+}
+
 .form-control {
   border: 2px solid black;
+}
 
+.table th {
+  border: none !important;
+}
+.review-table tr, .review-table th, .review-table tr, .review-table thead, .review-table tbody {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.review-table th {
+  border: none !important;
+}
+
+.star-rating {
+  margin-bottom: 5px;
 }

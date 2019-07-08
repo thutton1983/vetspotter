@@ -7,7 +7,7 @@ class VeterinariansController < ApplicationController
   # GET /veterinarians.json
   def index
     @veterinarians = Veterinarian.all.paginate(page: params[:page], per_page: 10)
-  end
+end
 
   def search
     if params[:search].present?
