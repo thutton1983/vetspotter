@@ -1,7 +1,26 @@
-<h1>New Veterinarian Review</h1>
+<h1 style="margin-top: 10px;">New Review</h1>
+<h2 style="text-align:center;"><%= @veterinarian.name %> <h2>
 
 <br>
 
+<div class = "row">
+<div class="col col-lg-6" style="padding-right:150px;">
+
 <%= render 'form', review: @review %>
 
-<%= link_to 'Back', veterinarian_path(@veterinarian) %>
+<span style="font-size:15px;"> <%= link_to 'Back', veterinarian_path(@veterinarian) %></span>
+
+
+</div>
+
+<div>
+
+<div class="col col-lg-6">
+
+<div style="margin-left:175px;">
+<%= image_tag @veterinarian.image_url %>
+</div>
+
+</div>
+
+</div>

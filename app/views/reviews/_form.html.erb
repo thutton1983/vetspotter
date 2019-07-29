@@ -13,13 +13,13 @@
       </ul>
     </div>
   <% end %>
-
-  <div id="star-rating"> </div>
+  <p style="font-size: 15px;"> Overall rating on a scale of 1-5:</p>
+  <div style="margin-bottom: 0px;" id="star-rating"> </div>
   <br>
 
-  <div class="form-group">
-    <%= form.label :comment %>
-    <%= form.text_area :comment, class: "form-control"%>
+  <div style="margin-top: -10px; class="form-group">
+  <p style="font-size: 15px;"> <%= form.label :comment  %>: </p>
+  <p>  <%= form.text_area :comment, class: "form-control" %>
   </div>
 
   <div class="actions">
