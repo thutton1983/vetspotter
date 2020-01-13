@@ -38,6 +38,28 @@ h1 {
   cursor: pointer;
 }
 
+/*added 1/12/2020*/
+
+.btn_blue_background {
+  background: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px;
+  border-color: #8fd2ff;
+  margin-bottom: 9px;
+  cursor: pointer;
+}
+
+.btn_blue_background:hover {
+  background-color: black;
+  border: 1px solid black;
+  color:white;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 7px;
+}
+
 .btn:hover {
   background-color: black;
   border: 1px solid black;

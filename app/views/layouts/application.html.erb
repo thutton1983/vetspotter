@@ -22,7 +22,7 @@
       <% end %>
       <%= yield %>
 
-      <%= render 'layouts/footer' %>
+      <% unless action_name == "index" %> <%=render 'layouts/footer' %> <% end %>
     </div>
   </body>
 </html>
